@@ -1,17 +1,48 @@
-import React from 'react';
+import React, { useContext, useState } from 'react';
 import { useForm } from 'react-hook-form';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
+import login from '../../assets/login.png';
+import { AuthContext } from '../../Context/AuthProvider';
 
 const Login = () => {
 
     // step_2: useForm theke eigual niye nite hobe___________________________________________________
-    const {register, formState: { errors }, handleSubmit}  = useForm
+    const {register, formState: { errors }, handleSubmit}  = useForm();
+
+
+    // authcontext theke signIn ta ke niye nite hobe___________________________________________
+    const {signIn} = useContext(AuthContext);
+
+
+    // user bhul password dile setar jonno amra ekta error dekhabo ar tai eikhane ekta usestate use korte hobe_____
+    const [loginError, setLoginError] = useState('');
+
+
+
+
+
+    const location = useLocation();
+    const navigate = useNavigate();
+
+    const from = location.state?.from?.pathname || '/';
 
 
 
 
     // step_3: handleLogin ta eikhane  declare korte hobe___________and go to the firebase___ tarpor seikhane ja kaj kora lagbe seigula kore felte hobe__________________________________________________________________________________tarpor arekta folder banaya felte hobe_____ firebase name diye__________________________________________
     const handleLogin = data => {
-        console.log(data);
+          setLoginError('');
+          signIn(data.email, data.password)
+          .then(result => {
+            const user = result.user;
+            console.log(user);
+            navigate(from, {replace: true});
+          })
+          .catch(error => {
+            
+            console.error(error.message)
+            setLoginError(error.message);
+          });
     }
 
 
@@ -21,14 +52,21 @@ const Login = () => {
     return (
         <div>
              
-         {/* LOGIN HEADER START_____________________________________________________________________ */}
-              <h1 className="text-5xl font-bold text-center text-slate-700">Login now !</h1>
-        {/* LOGIN HEADER END_____________________________________________________________________ */}
+              {/* LOGIN HEADER START_____________________________________________________________________ */}
+                  <h1 className="text-5xl font-bold text-center text-slate-700 mb-20 mt-5">Login now !</h1>
+              {/* LOGIN HEADER END_____________________________________________________________________ */}
 
 
 
+            <div className='grid lg:grid-cols-2 sm:grid-cols-1'>
 
-{/* step_1: form ta ke eikhane bosaite hobe_____ */}
+                    <div className=''>
+                        <img src={login} alt="" className='w-96 h-96' />
+                    </div>
+
+
+                    <div>
+                          {/* step_1: form ta ke eikhane bosaite hobe_____ */}
 {/* LOGIN FORM START_________________________________________________________________________________ */}
 
 
@@ -66,16 +104,29 @@ const Login = () => {
      
      
       
-<button className="btn btn-active btn-primary w-full" type='submit'>Login !</button>
+<button className="btn btn-active btn-primary w-full max-w-xs" type='submit'>Login !</button>
 
 <div>
-  {/* {loginError && <p className='text-red-500'>{loginError}</p>} */}
+  
 </div>
+
+
+{/* login korar somoy bhul kisu dile sheii error msg ta eikhane dekhabe______ */}
+{loginError && <p className='text-red-500'>{loginError}</p>}
 
     </form>
 
 
 {/* LOGIN FORM END_________________________________________________________________________________ */}
+
+<p className='mt-2'>Don't Have an Account_? <Link to='/register' className='text-orange-700'> Sign Up</Link></p>
+
+                    </div>
+
+            </div>
+
+
+
 
         </div>
     );

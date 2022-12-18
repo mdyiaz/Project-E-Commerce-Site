@@ -1,8 +1,20 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import logo from '../../../assets/shopping.png';
+import { AuthContext } from '../../../Context/AuthProvider';
 
 const Navbar = () => {
+
+
+  // logOut er jonno user ta ke niye nicchi ____________________________________________-
+  const {user, logOut} = useContext(AuthContext);
+
+
+  const handleLogOut = () =>{
+        logOut()
+        .then(() => {})
+        .catch(err => console.error(err));
+  }
     return (
        <div>
        
@@ -26,8 +38,18 @@ const Navbar = () => {
           <div>
               <ul className='flex justify-center gap-5 text-sm py-2 text-slate-700'>
                 <li><Link>About Us</Link></li>
-                <li><Link to='/login'>Login</Link></li>
-                <li><Link>WishList</Link></li>
+
+              
+               { user?.uid ?  
+                    <>
+                        <li><button onClick={handleLogOut}>Sign Out</button></li>
+                        <li><Link to='/dashboard'>Dashboard</Link></li>
+                    </>
+                    :
+                    <li><Link to='/login'>Login</Link></li>
+               }
+
+
                 <li><Link>Blogs</Link></li>
               </ul>
           </div>
@@ -92,7 +114,7 @@ const Navbar = () => {
       </label>
     
      
-      <ul tabIndex={0} className="menu menu-compact dropdown-content mt-3 p-2 shadow  rounded-box w-52 ">
+      <ul tabIndex={0} className="menu menu-compact dropdown-content mt-3 p-2 shadow  rounded-box w-52 bg-sky-500 ">
 
         <p className='bg-sky-400 rounded-lg p-2 text-white text-center font-bold'>All Categories</p>
         <li><Link className='text-black'>Fruits & Vegetables</Link></li> <hr />

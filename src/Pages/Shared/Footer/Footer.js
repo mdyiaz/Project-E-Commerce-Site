@@ -1,28 +1,52 @@
 import React from 'react';
 
+
 const Footer = () => {
     return (
         <div>
+
+
+
+        <div className='grid lg:grid-cols-2 sm:grid-cols-1 bg-blue-900 rounded-lg mt-10'>
+            <div className='px-10'>
+                <p className='text-white mt-20 text-xl'>$20 discount for your first order</p>
+                <h1 className='text-white text-4xl font-bold mt-3 mb-5'>Join our newsletter and get...</h1>
+                <p className='text-base mb-10 text-slate-400'>Join our email subscription now to get updates <br /> on promotions and coupons.</p>
+                <input type="text" placeholder="Your Email address" className="input input-bordered input-lg w-full max-w-xs"   /> <br />
+                <button className="btn btn-info text-white mt-3 mb-8">Subscribe</button>
+
+
+            </div>
+
+            <div>
+
+              <img src="https://i.ibb.co/Prtx0J5/footer.png" alt="" className='w-full' />
+
+            </div>
+        </div>
+
+
+
             <footer className="footer p-10 bg-base-200 text-base-content mt-10">
   <div>
     <span className="footer-title">Services</span> 
-    <a className="link link-hover">Branding</a> 
-    <a className="link link-hover">Design</a> 
-    <a className="link link-hover">Marketing</a> 
-    <a className="link link-hover">Advertisement</a>
+    <p className="link link-hover">Branding</p> 
+    <p className="link link-hover">Design</p> 
+    <p className="link link-hover">Marketing</p> 
+    <p className="link link-hover">Advertisement</p>
   </div> 
   <div>
     <span className="footer-title">Company</span> 
-    <a className="link link-hover">About us</a> 
-    <a className="link link-hover">Contact</a> 
-    <a className="link link-hover">Jobs</a> 
-    <a className="link link-hover">Press kit</a>
+    <p className="link link-hover">About us</p> 
+    <p className="link link-hover">Contact</p> 
+    <p className="link link-hover">Jobs</p> 
+    <p className="link link-hover">Press kit</p>
   </div> 
   <div>
     <span className="footer-title">Legal</span> 
-    <a className="link link-hover">Terms of use</a> 
-    <a className="link link-hover">Privacy policy</a> 
-    <a className="link link-hover">Cookie policy</a>
+    <p className="link link-hover">Terms of use</p> 
+    <p className="link link-hover">Privacy policy</p> 
+    <p className="link link-hover">Cookie policy</p>
   </div>
 </footer> 
 <footer className="footer px-10 py-4 border-t bg-base-200 text-base-content border-base-300">

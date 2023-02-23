@@ -1,11 +1,14 @@
 import React, { useContext, useState } from 'react';
 import { useForm } from 'react-hook-form';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import registerpic from '../../assets/register.webp'
 import { AuthContext } from '../../Context/AuthProvider';
 import toast from 'react-hot-toast';
 
 const Register = () => {
+
+
+    const navigate = useNavigate();
 
     const {register, formState:{errors}, handleSubmit} = useForm()
 
@@ -27,7 +30,9 @@ const Register = () => {
                     displayName: data.name
                 }
                 updateUser(userInfo)
-                .then(() => {})
+                .then(() => {
+                    navigate('/');
+                })
                 .catch(err => console.error(err));
         })
         .catch(error => {
@@ -63,7 +68,7 @@ const Register = () => {
                     </label>
                 <input type="name" {...register ('name', {required:'Name is required'})}  placeholder="Enter Your Name" className="input input-bordered w-full max-w-xs" />
 
-            {errors.name &&  <p className='text-red-500'>{errors.name?.message}</p>  }
+            {errors.name &&  <p className='text-red-500'>{errors.name?.message}</p>}
             </div>
       
 

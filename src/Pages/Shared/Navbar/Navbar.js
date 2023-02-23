@@ -76,8 +76,8 @@ const Navbar = () => {
 
        <div className="navbar bg-base-100">
   <div className="navbar-start">
-    <img src={logo} alt="HighLife" className='w-20 rounded-full' />
-    <h1 className='text-4xl text-blue-800 font-bold '>HighLife</h1>
+    <Link to="/"><img src={logo} alt="HighLife" className='w-20 rounded-full' /></Link>
+    <Link to="/"><h1 className='text-4xl text-blue-800 font-bold '>HighLife</h1></Link>
   </div>
   
   <div className="navbar-center">
@@ -131,18 +131,20 @@ const Navbar = () => {
 
     <div className=''>
       <ul className='flex gap-14 '>
-        <li className='hover:text-sky-400 font-semibold text-slate-700'><Link>HOME</Link></li>
-        <li className='hover:text-sky-400 font-semibold text-slate-700'><Link>SHOP</Link></li>
-        <li className='hover:text-sky-400 font-semibold text-slate-700'><Link>MEATS & SEAFOODS</Link></li>
-        <li className='hover:text-sky-400 font-semibold text-slate-700'><Link>BAKERY</Link></li>
-        <li className='hover:text-sky-400 font-semibold text-slate-700'><Link>BEVERAGES</Link></li>
+        <li className='hover:text-sky-400 text-sm font-serif font-bold text-slate-700'><Link>HOME</Link></li>
+        <li className='hover:text-sky-400 text-sm font-serif font-bold text-slate-700'><Link>SHOP</Link></li>
+        <li className='hover:text-sky-400 text-sm font-serif font-bold text-slate-700'><Link>MEATS & SEAFOODS</Link></li>
+        <li className='hover:text-sky-400 text-sm font-serif font-bold text-slate-700'><Link>BAKERY</Link></li>
+        <li className='hover:text-sky-400 text-sm font-serif font-bold text-slate-700'><Link>BEVERAGES</Link></li>
       </ul>
       
     </div>
 </div>
 <hr className='mt-3'></hr>
 
-{/* Navbar 4th Part START__________________________________________________________________________ */}
+{/* Navbar 4th Part __________________________________________________________________________ */}
+
+
 
 
 
